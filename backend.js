@@ -20,9 +20,9 @@ const PORT = 7000;
 
 // MySQL connection setup
 const db = mysql.createConnection({
-  host: 'localhost',        // change if needed
+  host: 'dpg-d1julr7diees73cisnq0-a',      // change if needed
   user: 'root',  // your MySQL username
-  password: '', // your MySQL password
+  password: 'dpg-d1julr7diees73cisnq0-a', // your MySQL password
   database: 'space_data',// your database name
   multipleStatements: true
 });
@@ -228,9 +228,9 @@ app.get('/api/status', (req, res) => {
 
 
 const dbConfig = {
-  host: 'localhost',
+  host: 'dpg-d1julr7diees73cisnq0-a',
   user: 'root',
-  password: '', // Change if you use a password
+  password: 'dpg-d1julr7diees73cisnq0-a', // Change if you use a password
   database: 'space_data'
 };
 
