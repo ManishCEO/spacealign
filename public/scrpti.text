@@ -1,0 +1,14 @@
+<script>
+    async function assignSeat() {
+      const branch = document.getElementById('branch').value;
+
+      const response = await fetch('http://localhost:7000/fetch-and-insert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ selectedValue: selectbr })
+      });
+
+      const result = await response.text();
+      document.getElementById('status').innerText = result;
+    }
+  </script>

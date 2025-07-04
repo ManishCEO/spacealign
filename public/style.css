@@ -1,0 +1,576 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Reset & base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 20px;
+}
+
+/* Navigation bar */
+.Nav {
+  background-color: rgba(150, 2, 2, 0.836);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.Nav a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.Nav a:hover {
+  background-color: #555;
+}
+
+/* Logo placeholder, add background-image or text */
+.Nav .lo {
+  width: 100px;
+  height: 40px;
+  /*background-image: url('log.png');  Replace or remove */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+}
+
+/* Admin dashboard title */
+#D {
+  margin: 20px 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Dashboard container */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Dashboard cards */
+.Dashboard {
+  flex: 1 1 calc(20% - 20px); /* Five cards in a row with gap */
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  text-align: center;
+  min-width: 160px;
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.Dashboard p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.Dashboard h4 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111;
+}
+
+.Dashboard:hover {
+  transform: translateY(-5px);
+}
+
+/* Color coding for each card */
+#green { background-color: #d4edda; color: #155724; }
+#red { background-color: #f8d7da; color: #721c24; }
+#blue { background-color: #d1ecf1; color: #0c5460; }
+#pink { background-color: #fce4ec; color: #880e4f; }
+#black { background-color: #d6d8d9; color: #1b1e21; }
+
+/* Scrolling status container */
+.up {
+  margin-top: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 2px solid #333;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 10px 0;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Scrolling status text */
+#status {
+  display: inline-block;
+  padding-left: 100%;
+  font-weight: 600;
+  color: #222;
+  animation: marquee 10s linear infinite;
+}
+
+/* Marquee keyframes */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+  .Dashboard {
+    flex: 1 1 calc(33.33% - 20px); /* 3 cards per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Dashboard {
+    flex: 1 1 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+  .Nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #D {
+    font-size: 22px;
+    text-align: center;
+  }
+}
+
+
+/* Container for table with horizontal scroll on small screens */
+.label {
+  padding: 20px;
+  overflow-x: auto; /* enables horizontal scroll on narrow viewports */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* Prevent table squishing on wide screens */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header and cell styles */
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Table header styling */
+th {
+  background-color: #2a9df4;
+  color: #fff;
+  font-weight: 600;
+  position: sticky; /* Sticky headers when scrolling */
+  top: 0;
+  z-index: 1;
+}
+
+/* Zebra stripe rows */
+tr:nth-child(even) {
+  background-color: #f8faff;
+}
+
+/* Highlight row on hover */
+tr:hover {
+  background-color: #d0e7ff;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+
+/* Medium devices (tablets) */
+@media (max-width: 768px) {
+  table {
+    min-width: 600px; /* Smaller min-width but still scrollable */
+  }
+}
+
+/* Small devices (phones) */
+@media (max-width: 480px) {
+  .label {
+    padding: 10px;
+  }
+
+  table {
+    min-width: 500px; /* Allow horizontal scroll */
+    font-size: 12px;  /* Smaller font size */
+  }
+
+  th, td {
+    padding: 8px 10px;
+  }
+}
+
+
+
+
+/* Form title */
+.form p {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #852702;
+}
+/* Container that fills the rest of the viewport */
+.form-container {
+  flex: 1; /* fills remaining height below nav */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  padding: 20px;
+}
+
+.form {
+  background-color: #fff;
+  max-width: 480px;
+  width: 100%;               /* make form responsive */
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  /* margin removed */
+}
+
+/* Inputs and selects */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #852702;
+  outline: none;
+}
+
+/* Submit button */
+button {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  background-color: #852702;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c93c04;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+ 
+
+  .form {
+    max-width: 100%;
+    padding: 25px 15px;
+    margin: 20px auto;
+  }
+
+  input[type="text"],
+  select,
+  button {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* My code*/
+
+
+/*
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/*
+body {
+    background-color: white;
+    max-width: 100%;
+    height: 100%;
+
+}
+
+.Nav {
+    background-color: #A01D1E;
+    border-radius: 0.5rem;
+    height: 3rem;
+    max-width: 100%;
+    font-size: 1em;
+    color: black;
+    display: flex;
+
+    
+
+
+}
+
+.lo {
+    margin-top: .03rem;
+    height: 2.9rem;
+    width: 12rem;
+    background-image: url('log.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+
+}
+
+
+a {
+    margin-right: 10rem;
+    margin-top: 0.9rem;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+#status {
+    display: flex;
+    margin: 2rem;
+    font-size: 1rem;
+    color: blue;
+    font-weight: bolder;
+
+} */
+
+
+/* add emp page ---------------------------------------*/
+/*
+.form {
+    display: flex;
+    margin: 2rem 0rem 1rem 40rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 50vh;
+    width: 100%;
+
+
+}
+
+
+
+.form form {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0.2em solid white;
+    border-radius: 0.6em;
+    padding: 20rem, 10rem;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5em;
+
+
+}
+
+.form form p {
+    color: red;
+    font-size: 2rem;
+    font-weight: 600;
+
+}
+
+.form form input,
+select {
+
+    padding-left: 1em;
+    height: 3vh;
+    width: 100%;
+    margin: 0.5rem;
+    border-radius: 0.6em;
+
+}
+
+button {
+    width: 80%;
+    height: 3vh;
+    margin-bottom: 1em;
+    background-color: red;
+    border-radius: 0.5em;
+    border: none;
+
+
+}*/
+
+/*-------Index.html Css code-------*/
+/*
+#D {
+    margin-left: 10rem;
+    margin-top: 2rem;
+    color: red;
+    font-size: 2rem;
+    font-weight: 600;
+
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0rem 2rem 14rem;
+    gap: 2rem;
+}
+
+.Dashboard {
+
+
+    border:  solid rgb(255, 38, 0);
+    width: 15%;
+    height: 8rem;
+    border-radius: 1em;
+    margin-top: 1rem;
+    padding: 1rem;
+
+
+}
+
+#green {
+    background-color: rgb(0, 9, 128);
+    color: red;
+    border: 1rem solid rgb(0, 9, 128);
+    text-align: center;
+
+
+}
+
+#red {
+    background-color: rgb(207, 89, 89);
+    color: white;
+    border: 1rem solid rgb(207, 89, 89);
+    text-align: center;
+
+}
+
+#blue {
+    background-color: rgb(14, 29, 231);
+    color: red;
+    border: 1rem solid rgb(14, 29, 231);
+    text-align: center;
+
+}
+
+#pink {
+    background-color: rgb(190, 59, 162);
+    color: black;
+    border: 1rem solid rgb(190, 59, 162);
+    text-align: center;
+
+}
+
+#black {
+    background-color: rgb(21, 21, 26);
+    color: red;
+    border: 1rem solid rgb(21, 21, 26);
+    text-align: center;
+
+}
+
+
+.Dashboard h4 {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+
+
+}
+
+.up {
+    border: 1rem solid grey;
+    height: 50vh;
+    width: 73%;
+    margin: 1rem 0rem 2rem 14rem;
+    justify-content: center;
+
+}
+
+.p {
+    height: 2rem;
+    width: fit-content;
+    margin-left: 1rem;
+
+} */

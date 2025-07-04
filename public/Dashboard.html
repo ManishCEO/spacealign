@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space_Data</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/addemp.css">
+</head>
+
+<body>
+    <div class="Nav">
+        <a class="lo" href="Dashboard.html"></a>
+        <a href="Dashboard.html">Dashboard</a>
+        <a href="empdetails.html">Space Data</a>
+        <a href="AddEmp.html">Add Employee</a>
+        <a>WPS-NOC</a>
+    </div>
+    <p id="D"></p>
+    <div class="flex">
+        <div class="Dashboard" id="green">
+            <p> Total Workstations</p>
+            <h4></h4>
+
+        </div>
+        <div class="Dashboard" id="red">
+            <p> Visitor Village workstations</p>
+            <h4></h4>
+
+        </div>
+        <div class="Dashboard" id="blue">
+            <p>Occupied Workstation</p>
+            <h4></h4>
+
+        </div>
+        <div class="Dashboard" id="pink">
+            <p>Vacant Workstation</p>
+            <h4></h4>
+
+        </div>
+        <div class="Dashboard" id="black">
+            <p>New Workstation Request</p>
+            <h4></h4>
+
+        </div>
+    </div>
+
+    <div class="up">
+        <p id="status">Upcoming Status from WPS</p>
+    </div>
+    <script>
+        function fetchStatus() {
+            fetch('/api/status')
+                .then(res => {
+                    if (!res.ok) throw new Error('Network response was not ok');
+                    return res.json();
+                })
+                .then(data => {
+                    const boxes = document.querySelectorAll('.Dashboard');
+                    boxes[0].querySelector('h4').textContent = data.total;
+                    boxes[1].querySelector('h4').textContent = data.visitor;
+                    boxes[2].querySelector('h4').textContent = data.occupied;
+                    boxes[3].querySelector('h4').textContent = data.vacant;
+
+                })
+                .catch(err => console.error('Fetch error:', err));
+        }
+        fetchStatus();
+        setInterval(fetchStatus, 10000);
+    </script>
+
+
+</body>
+
+</html>

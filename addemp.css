@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.label{
+    margin: 3rem 2rem 14rem 20rem;
+}
+
+
+.label .field .tr{
+    display: flex;
+   
+
+}
+
+.label .field .th{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    color: green;
+    border: 1px solid black;
+    width: 100%;
+
+}
+

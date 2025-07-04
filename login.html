@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style1.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <form action="/login" method="post">
+                <p>Employee Login</p>
+                <input type="text" name="username" placeholder="Enter your Email ID">
+                <p id="error-msg" style="color: red; margin-top: 5px;"></p>
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
+    <script>
+  const form = document.querySelector('form');
+  const errorMsg = document.getElementById('error-msg');
+
+  form.addEventListener('submit', function(event) {
+    const username = form.username.value.trim();
+
+    if (!username) {
+      event.preventDefault(); // stop form submission
+      errorMsg.textContent = 'Please enter your Email ID.';
+    } else {
+      errorMsg.textContent = ''; // clear error message
+    }
+  });
+</script>
+
+<script>
+  // Get the 'error' param from the URL
+  const params = new URLSearchParams(window.location.search);
+  const error = params.get('error');
+
+  // If error exists, display it inside the <p id="error-msg">
+  if (error) {
+    document.getElementById('error-msg').textContent = decodeURIComponent(error);
+  }
+</script>
+     
+</body>
+
+</html>

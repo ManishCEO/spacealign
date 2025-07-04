@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add_emp</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+     
+    #status-msg {
+      margin-bottom: 15px;  /* space below message */
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+  
+    <p id="status-msg" ></p>
+
+    <div class="form-container">
+
+         
+        <div class="form">
+
+            <form action="/fetch-and-insert" method="post">
+                <p>Seat Registration Allocation Form</p>
+                <input type="text" name="fullname" placeholder="Enter your FullName" required>
+                <input type="text" name="Imanager" placeholder="Enter your Immediate Manager" required>
+                <input type="text" name="email" placeholder="Enter your Email ID" required>
+                <select name="gender" required>
+                    <option value="" disabled selected hidden>Choice Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <select name="empstd" required>
+                    <option value="" disabled selected hidden>Choice your Employee Std.</option>
+                    <option value="FTE">FTE-Full Time Employee</option>
+                    <option value="Intern">Intern Employee</option>
+                    <option value="NKW">NKW-Non Keysight</option>
+                    <option value="ETW">ETW-External Temporary Worker</option>
+                </select>
+
+                <select name="site" required>
+                    <option value="" disabled selected hidden>Choice your Work Place</option>
+                    <option value="Gurugram India">Gurugram-IND</option>
+                    <option value="Jasola India">Jasola-IND</option>
+                    <option value="Bangalore India">Bangalore-IND</option>
+                </select>
+
+                <label for="selectdepartment"></label>
+                <select name="dept" id="Selectdept" required></select>
+                <label for="selectadmin"></label>
+                <select name="admin" id="admin">
+                    <option>Select Admin</option>
+                </select>
+                <label for="selectbranch"></label>
+
+                <select id="selectbr" name="select">
+                    <option>Select Branch</option>
+                </select>
+
+                <label id="status"></label>
+                <button onclick="assignSeat()">Submit</button>
+
+            </form>
+
+        </div>
+        
+
+    </div>
+    
+    <script src="app.js"></script>
+
+     <script>
+    const params = new URLSearchParams(window.location.search);
+    const message = params.get('message');
+    const error = params.get('error');
+    const statusEl = document.getElementById('status-msg');
+
+    if (message) {
+      statusEl.textContent = decodeURIComponent(message);
+      statusEl.style.color = 'green';
+    } else if (error) {
+      statusEl.textContent = decodeURIComponent(error);
+      statusEl.style.color = 'red';
+    }
+
+    // Clean the URL so message/error not visible in address bar
+    if (message || error) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  </script>
+
+</body>
+
+</html>
