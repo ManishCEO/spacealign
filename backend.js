@@ -230,7 +230,7 @@ app.get('/api/status', (req, res) => {
 const dbConfig = {
   host: 'localhost',
   user: 'root',
-  password: 'manish123@', // Change if you use a password
+  password: '', // Change if you use a password
   database: 'space_data'
 };
 
