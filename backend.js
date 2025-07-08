@@ -25,6 +25,7 @@ const db = mysql.createConnection({
   user: 'root',  // your MySQL username
   password: 'aGS0eM2qXDt3KgYK6G9piTkO9GwI0jB0', // your MySQL password
   database: 'space_data',// your database name
+  port: '3306',
   multipleStatements: true
 });
 
