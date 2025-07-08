@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true })); // Important for form fields
 //const PORT = 7000;
-const PORT = 3306;
+const PORT = 7000;
 
 
 
